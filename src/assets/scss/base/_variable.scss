@@ -1,0 +1,52 @@
+// font-weight
+$fw-2: 200;
+$fw-3: 300;
+$fw-4: 400;
+$fw-5: 500;
+$fw-6: 600;
+
+//font-size:
+$fz-16: 16px;
+$fz-20: 20px;
+$fz-24: 24px;
+$fz-30: 30px;
+$fz-40: 40px;
+
+//color text
+$cl-text-dark: #000000;
+$cl-text-black: #140101;
+$cl-text-black-2: #1e1d1d;
+$cl-text-white: #f7f7f7;
+$cl-text-grey: #cbc9c9;
+$cl-text-whiteF: #ffffff;
+$cl-text-whiteFC: #fffcfc;
+$cl-text-whiteF8: #fff8f8;
+$cl-text-green: #1ed90e;
+
+$cl-text-red: #fc0303;
+$cl-text-red-1:#F50E0E;
+
+// color input
+$cl-inp-primary :#AE18E2;
+
+//background
+$bg-white: #f8f8f8;
+$bg-whiteF: #ffffff;
+$bg-whiteFC: #fffcfc;
+$bg-grey: #dedddc;
+$bg-grey-C: #cccccc;
+$bg-yellow-1: #f8b653;
+$bg-yellow-2: #e1b067;
+$bg-blue-primary: linear-gradient(180deg, #6181f3 0%, #7c97f5 99.48%);
+$bg-purple-primary: linear-gradient(
+  270deg,
+  rgba(62, 32, 248, 0.9) 5.14%,
+  #d017ee 89.71%
+);
+
+//
+@mixin text($fw: $fw-2, $fz: $fz-16, $c: $cl-text-dark) {
+  font-weight: $fw;
+  font-size: $fz;
+  color: $c;
+}

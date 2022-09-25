@@ -1,0 +1,156 @@
+.register {
+  input::placeholder {
+    line-height: 36.31px;
+    @include text($fw-4, $fz-16, $cl-text-dark);
+  }
+  .container {
+    .title {
+      p {
+        @include text($fw-4, $fz-40, $cl-text-dark);
+        text-align: center;
+        margin-bottom: 30px;
+      }
+    }
+    .form {
+      .reg-content {
+        display: flex;
+        justify-content: space-around;
+        gap: 100px;
+        padding: 0 100px;
+        .reg-left {
+          display: flex;
+          flex-direction: column;
+          flex: 0 0 50%;
+          position: relative;
+          width: 520px;
+          .input {
+            border-bottom: 3px solid $cl-inp-primary;
+            padding-top: 30px;
+            input {
+              width: 100%;
+              outline: none;
+              border: none;
+            }
+            span {
+              position: absolute;
+              right: 0;
+              color: $cl-text-red-1;
+            }
+          }
+        }
+        .reg-right {
+          display: flex;
+          flex-direction: column;
+          flex: 0 0 50%;
+          position: relative;
+          width: 520px;
+          .input {
+            border-bottom: 3px solid $cl-inp-primary;
+            padding-top: 30px;
+            input {
+              width: 100%;
+              outline: none;
+              border: none;
+            }
+            span {
+              position: absolute;
+              right: 0;
+              color: $cl-text-red-1;
+            }
+          }
+          .gender {
+            margin-top: 30px;
+            display: flex;
+            span {
+              line-height: 36.31px;
+              @include text($fw-4, $fz-30, $cl-text-dark);
+            }
+            .gender_inp {
+              margin-left: 40px;
+              display: flex;
+              align-items: center;
+              gap: 5px;
+              input {
+                width: 20px;
+                height: 20px;
+              }
+            }
+            label {
+              @include text($fw-3, $fz-24, $cl-text-dark);
+              display: flex;
+              align-items: center;
+            }
+            .radio {
+              margin: 0.5rem;
+              input[type="radio"] {
+                position: absolute;
+                opacity: 0;
+                + .radio-label {
+                  &:before {
+                    content: "";
+                    background: #fff;
+                    border-radius: 100%;
+                    border: 1px solid darken(#fff, 25%);
+                    display: inline-block;
+                    width: 1.4em;
+                    height: 1.4em;
+                    position: relative;
+                    top: 0;
+                    left: 20px;
+                    margin-right: 1em;
+                    vertical-align: top;
+                    cursor: pointer;
+                    text-align: center;
+                    transition: all 250ms ease;
+                  }
+                }
+                &:checked {
+                  + .radio-label {
+                    &:before {
+                      background-color: #ae18e2;
+                      box-shadow: inset 0 0 0 4px #d9d9d9;
+                    }
+                  }
+                }
+                &:focus {
+                  + .radio-label {
+                    &:before {
+                      outline: none;
+                      border-color: #fff;
+                    }
+                  }
+                }
+                &:disabled {
+                  + .radio-label {
+                    &:before {
+                      box-shadow: inset 0 0 0 4px #fff;
+                      border-color: darken(#fff, 25%);
+                      background: darken(#fff, 25%);
+                    }
+                  }
+                }
+                + .radio-label {
+                  &:empty {
+                    &:before {
+                      margin-right: 0;
+                    }
+                  }
+                }
+              }
+            }
+          }
+          .btn-submit {
+            margin-top: 50px;
+            width: 291px;
+            height: 50px;
+            line-height: 36.31px;
+            @include text($fw-4, $fz-30, $cl-text-whiteFC);
+            border: none;
+
+            background: $cl-inp-primary;
+          }
+        }
+      }
+    }
+  }
+}

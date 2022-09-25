@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
 }
 
 .App-logo {
@@ -36,3 +36,90 @@
     transform: rotate(360deg);
   }
 }
+
+/* css Form Register */
+.material-form-field {
+  font-size: 14px;
+  position: relative;
+  display: block;
+  color: #000000;
+  padding: 25px 0 10px 0;
+  text-align: left;
+}
+.material-form-field .material-form-field-label {
+  position: absolute;
+  display: block;
+  top: 10px;
+  left: 0px;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+  pointer-events: none;
+  cursor: text;
+  font-weight: 400;
+  font-size: 20px;
+  color: #000000;
+}
+.material-form-field input {
+  padding: 10px 0 10px 0;
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 3px solid #ae18e2;
+  outline: none;
+  font-weight: 400;
+  font-size: 16px;
+  color: #000000;
+}
+.material-form-field input:invalid {
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.material-form-field input:valid ~ .material-form-field-label,
+.material-form-field input:focus ~ .material-form-field-label {
+  top: 10px;
+  font-size: 14px;
+}
+.material-form-field input:focus {
+  outline: none;
+  color: #000000;
+  padding-bottom: 10px;
+  border-bottom-width: 3px;
+  border-bottom-color: 3px solid #ae18e2;
+}
+.material-form-field input:focus ~ .material-form-field-label {
+  color: red;
+}
+.material-form-field.material-form-field-invalid {
+  color: #d50000;
+}
+.material-form-field.material-form-field-invalid::after {
+  content: attr(data-validationError);
+}
+.material-form-field.material-form-field-invalid
+  input:focus
+  ~ .material-form-field-label {
+  color: #d50000;
+}
+
+::-webkit-input-placeholder {
+  opacity: 0.3;
+}
+
+::-moz-placeholder {
+  opacity: 0.3;
+}
+
+:-ms-input-placeholder {
+  opacity: 0.3;
+}
+
+::-ms-input-placeholder {
+  opacity: 0.3;
+}
+
+::placeholder {
+  opacity: 0.3;
+}
+/*  */

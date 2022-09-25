@@ -1,0 +1,45 @@
+.carousel {
+  .carousel-indicators {
+  }
+  .carousel-inner {
+    .carousel-item {
+      .container {
+        .items-left {
+          width: 40%;
+          margin-left: 100px;
+          img {
+            width: 70%;
+          }
+        }
+        .items-right {
+          text-align: left;
+          width: 40%;
+          h2 {
+            font-size: 40px;
+            font-weight: 300;
+            line-height: 48px;
+            letter-spacing: 0em;
+          }
+          h4 {
+            font-size: 20px;
+            font-weight: 300;
+            line-height: 24px;
+            letter-spacing: 0em;
+          }
+          button {
+            height: 50px;
+            width: 150px;
+            color: white;
+            background: #F8B653;
+            border-radius: 0px;
+          }
+        }
+      }
+    }
+  }
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    background-color: black;
+    opacity: 0.2;
+  }
+}

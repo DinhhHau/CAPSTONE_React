@@ -1,0 +1,90 @@
+.cart {
+  background: $bg-whiteFC;
+  .content {
+    position: relative;
+    top: 0;
+    left: -12px;
+    height: 74px;
+    width: 698px;
+    border-radius: 0px;
+    background: linear-gradient(180deg, #F21299 0%, #1B02B5 100%);
+
+    h1 {
+      position: absolute;
+      @include text($fw-4, $fz-40, $cl-text-whiteF);
+      text-align: left;
+      height: 48px;
+      width: 303px;
+      left: 25px;
+      top: 10px;
+    }
+  }
+  .row {
+    .col-3 {
+      margin-top: 40px !important;
+      transition: all 0.3s ease-out;
+      .card {
+        box-shadow: 0 0 5px rgb(0 0 0 / 15%);
+        background: #f8f8f8;
+        img {
+        }
+        .card-body {
+          text-align: left;
+          .text-top {
+            line-height: 29px;
+            @include text($fw-3, $fz-24, $cl-text-dark);
+          }
+          .text-bot {
+            line-height: 24px;
+            @include text($fw-3, $fz-20, $cl-text-grey);
+          }
+        }
+        .btn-buy {
+          position: relative;
+          padding: 14px 20px;
+          height: 64px;
+          width: 175px;
+          border: none;
+          background-color: $bg-yellow-2;
+          transition: all 0.5s ease-out;
+          i {
+            width: 50px;
+            position: absolute;
+            height: 50px;
+            line-height: 45px;
+            border-radius: 50%;
+            background-color: #666666;
+            color: #fff;
+            top: 8px;
+            left: 55px;
+            font-size: 1.6em;
+            border: 4px solid #ffffff;
+          }
+        }
+        .btn-price {
+          height: 64px;
+          width: 160px;
+          border: none;
+          background-color: $bg-grey;
+          font-weight: $fw-6;
+          font-size: $fz-24;
+          transition: all 0.5s ease-out;
+        }
+        &:hover .icon {
+          background-color: $bg-yellow-1;
+        }
+        &:hover .btn-buy {
+          background-color: $bg-grey;
+        }
+
+        &:hover .btn-price {
+          background-color: $bg-yellow-1;
+          color: $cl-text-whiteFC;
+        }
+      }
+      &:hover {
+        transform: translateY(-5px);
+      }
+    }
+  }
+}

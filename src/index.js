@@ -59,7 +59,6 @@ root.render(
             >
               <Route path="profile" element={<Profile />}></Route>
               <Route path="cart" element={<Carts />}></Route>
-
             </Route>
           </Routes>
         </HistoryRouter>

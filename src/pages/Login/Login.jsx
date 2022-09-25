@@ -8,6 +8,7 @@ import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { loginApi } from "../../redux/reducers/userReducer";
 import toastService from "../../util/toast.service";
+import LoginFb from "./LoginFb/LoginFb";
 
 const eye = <FontAwesomeIcon icon={faEye} />;
 export default function Login(props) {
@@ -102,7 +103,9 @@ export default function Login(props) {
             Login
           </button>
         </div>
-        <div className="fb-connect"></div>
+        <div className="form-group fb-connect">
+          <LoginFb />
+        </div>
       </div>
     </form>
   );

@@ -9,7 +9,7 @@ import Paper from "@mui/material/Paper";
 import { useDispatch, useSelector } from "react-redux";
 import { Box, Button, TextField } from "@mui/material";
 import { IconMinus, IconPlus } from "@tabler/icons";
-import { changeQuantityBuy } from "../../../redux/reducers/productReducer";
+import { addCart, changeQuantityBuy } from "../../../redux/reducers/productReducer";
 import { type } from "@testing-library/user-event/dist/type";
 
 export default function CACartTable() {
@@ -48,7 +48,7 @@ export default function CACartTable() {
 
           <Button variant="contained" size="small" onClick={() => {
             
-            dispatch(changeQuantityBuy(true,rowObj.id));
+            dispatch(changeQuantityBuy(true), addCart(rowObj));
           }}>
             <IconPlus />
           </Button>

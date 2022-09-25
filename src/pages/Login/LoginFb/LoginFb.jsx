@@ -1,17 +1,41 @@
+import axios from "axios";
 import React from "react";
 import FacebookLogin from "react-facebook-login";
+import { useNavigate } from "react-router-dom";
+import toastService from "../../../util/toast.service";
+import { ACCESS_TOKEN, setStore } from "../../../util/tools";
 
 export default function LoginFb() {
+  const navigate = useNavigate();
   const responseFacebook = (response) => {
-    console.log(response);
+    axios({
+      url: "https://shop.cyberlearn.vn/api/Users/facebooklogin",
+      method: "POST",
+      data: {
+        facebookToken: response.accessToken,
+      },
+    }).then((res) => {
+      // Lưu vào localstorage
+      //   localStorage.setItem("accessToken", res.data.content.accessToken);
+      setStore(ACCESS_TOKEN, res.data.content.accessToken); // hàm có sẵn trong tool
+    });
   };
   return (
-    <div>
+    <div className="facebook text-white">
       <FacebookLogin
         appId="1225213111592360"
         autoLoad={true}
         fields="name,email,picture"
         callback={responseFacebook}
+        onClick={() => {
+          navigate(`/profile`);
+          toastService.showToast(
+            "success",
+            "Successfully",
+            "Logged in successfully !"
+          );
+        }}
+        icon="lab la-facebook"
       />
     </div>
   );

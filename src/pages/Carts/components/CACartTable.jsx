@@ -1,35 +1,49 @@
-import * as React from "react";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { Box, Button, Checkbox, TextField } from "@mui/material";
+import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import { useDispatch, useSelector } from "react-redux";
-import { Box, Button, TextField } from "@mui/material";
 import { IconMinus, IconPlus } from "@tabler/icons";
-import { addCart, changeQuantityBuy } from "../../../redux/reducers/productReducer";
-import { type } from "@testing-library/user-event/dist/type";
+import _ from "lodash";
+import * as React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  changeQuantityCart,
+  handleCheckAllToggleProductCart,
+  handleToggleProductCart,
+} from "../../../redux/reducers/productReducer";
 
 export default function CACartTable() {
   const dispatch = useDispatch();
+  const { arrCart } = useSelector((state) => state.productReducer);
 
   const columns = [
-    { id: "id", name: "id", },
+    { id: "id", name: "id" },
     {
       id: "image",
-      name: "img",
+      name: "Img",
       renderCell: (rowObj) => <img src={rowObj.image} width="80" />,
     },
-    { id: "name", name: "name" },
-    { id: "price", name: "price" },
+    { id: "name", name: "Name" },
+    { id: "price", name: "Price" },
     {
       id: "quantityBuy",
-      name: "quantity",
+      name: "Quantity",
       renderCell: (rowObj) => (
-        <Box sx={{ display: "flex", alignItems: "center" }}>
-          <Button variant="contained" size="small">
+        <Box className="box_quantity">
+          <Button
+            className="btn_minus"
+            variant="contained"
+            // size="small"
+            onClick={() => {
+              const action = { soLuong: false, rowObj };
+              dispatch(changeQuantityCart(action));
+            }}
+          >
             <IconMinus />
           </Button>
           <TextField
@@ -46,10 +60,14 @@ export default function CACartTable() {
             }}
           />
 
-          <Button variant="contained" size="small" onClick={() => {
-            
-            dispatch(changeQuantityBuy(true), addCart(rowObj));
-          }}>
+          <Button
+            className="btn_plus"
+            variant="contained"
+            // size="small"
+            onClick={() => {
+              dispatch(changeQuantityCart({ soLuong: true, rowObj }));
+            }}
+          >
             <IconPlus />
           </Button>
         </Box>
@@ -57,38 +75,92 @@ export default function CACartTable() {
     },
     {
       id: "total",
-      name: "total",
-      renderCell: (rowObj) => <>{(rowObj.price * rowObj.quantityBuy).toLocaleString()} $</>,
+      name: "Total",
+      renderCell: (rowObj) => (
+        <>{(rowObj.price * rowObj.quantityBuy).toLocaleString()} $</>
+      ),
     },
     {
-      id: "action", name: "action", renderCell: (rowObj) =>
-        <>
-          <Button variant="contained" size="small" sx={{ backgroundColor: "#6200ee", mr: 1 }}>
+      id: "action",
+      name: "Action",
+      renderCell: (rowObj) => (
+        <Box className="box_action">
+          <Button
+            variant="contained"
+            size="medium"
+            sx={{
+              backgroundColor: "#6200ee",
+              mr: 1,
+              transition: "all 0.3s ease",
+              ":hover": {
+                boxShadow:
+                  "0px 8px 10px rgb(0 0 0 / 14%), 0px 3px 14px rgb(0 0 0 / 12%),0px 5px 5px rgb(0 0 0 / 20%)",
+                transform: "translateY(-0.25em)",
+              },
+            }}
+          >
             Edit
           </Button>
-          <Button variant="contained" size="small" color="error">
+          <Button
+            variant="outlined"
+            startIcon={<DeleteIcon />}
+            color="error"
+            sx={{
+              transition: "all 0.3s ease",
+              ":hover": {
+                boxShadow:
+                  "0px 8px 10px rgb(0 0 0 / 14%), 0px 3px 14px rgb(0 0 0 / 12%),0px 5px 5px rgb(0 0 0 / 20%)",
+                transform: "translateY(-0.25em)",
+              },
+            }}
+          >
             Delete
           </Button>
-        </>,
+        </Box>
+      ),
     },
   ];
-  const { arrCart } = useSelector((state) => state.productReducer);
-  console.log(arrCart);
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
+    <TableContainer component={Paper} className="table_container">
+      <Table sx={{ minWidth: 650 }} aria-label="simple table" className="table">
+        <TableHead className="tb_header">
+          <TableRow className="tb_tr">
+            <TableCell>
+              <Checkbox
+                checked={
+                  arrCart.filter((x) => x.isSelected).length === arrCart.length
+                }
+                indeterminate={
+                  arrCart.filter((x) => x.isSelected).length > 0 &&
+                  arrCart.filter((x) => x.isSelected).length !== arrCart.length
+                }
+                onChange={(e) => {
+                  dispatch(handleCheckAllToggleProductCart(e.target.checked));
+                }}
+              />
+            </TableCell>
             {columns.map((item, index) => (
-              <TableCell key={item.id}>{item.name}</TableCell>
+              <TableCell key={index} className={item.id}>
+                {item.name}
+              </TableCell>
             ))}
           </TableRow>
         </TableHead>
-        <TableBody>
+        <TableBody className="tb_body">
           {arrCart.map((row) => (
             <TableRow key={row.id}>
+              <TableCell>
+                <Checkbox
+                  checked={row.isSelected}
+                  defaultChecked={false}
+                  onChange={(e) => {
+                    // console.log(e.target.checked);
+                    dispatch(handleToggleProductCart(row));
+                  }}
+                />
+              </TableCell>
               {columns.map((col, index) => (
-                <TableCell key={col.id}>
+                <TableCell key={index} className={col.id}>
                   {col.renderCell ? col.renderCell(row) : row[col.id]}
                 </TableCell>
               ))}

@@ -83,7 +83,7 @@ export const loginApi = (userLogin) => {
       console.log(err);
       toastService.showToast(
         "error",
-        "Logged Failed",
+        "Login Failed ",
         "Please register for an Account !"
       );
       history.push("/login");

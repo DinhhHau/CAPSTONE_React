@@ -3,10 +3,17 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
-import { addCart, changeQuantityBuy, getDetailApi } from "../../redux/reducers/productReducer";
+import {
+  addCart,
+  changeQuantityBuy,
+  getDetailApi,
+} from "../../redux/reducers/productReducer";
+import toastService from "../../util/toast.service";
 
 export default function Detail() {
-  const { productDetail , quantityBuy, arrCart } = useSelector((state) => state.productReducer);
+  const { productDetail, quantityBuy, arrCart } = useSelector(
+    (state) => state.productReducer
+  );
   console.log("productDetail", productDetail);
   const disptach = useDispatch();
   const param = useParams();
@@ -60,7 +67,7 @@ export default function Detail() {
                 className="plus btn btn-secondary"
                 // disabled={quantity === 1}
                 onClick={() => {
-                  disptach(changeQuantityBuy(false))
+                  disptach(changeQuantityBuy(false));
                 }}
               >
                 -
@@ -70,16 +77,23 @@ export default function Detail() {
                 id="up"
                 className="minus btn btn-secondary"
                 onClick={() => {
-                  disptach(changeQuantityBuy(true))
+                  disptach(changeQuantityBuy(true));
                 }}
               >
                 +
               </button>
             </div>
-            <button className="add-cart" onClick={()=>{
-              disptach(addCart(productDetail))
-
-            }}>
+            <button
+              className="add-cart"
+              onClick={() => {
+                toastService.showToast(
+                  "success",
+                  "Successfully",
+                  "Add to cart successfully!"
+                );
+                disptach(addCart(productDetail));
+              }}
+            >
               <a href="#">Add to cart</a>
             </button>
           </div>

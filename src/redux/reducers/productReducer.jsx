@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import toastService from "../../util/toast.service";
 import { http } from "../../util/tools";
 
 const initialState = {
@@ -42,6 +43,54 @@ const productReducer = createSlice({
           state.arrCart[index].quantityBuy + newProduct.quantityBuy;
       }
     },
+    // changeQuantityCart: (state, action) => {
+    //   const { soLuong, rowObj } = action.payload;
+    //   const cartUpdate = state.arrCart.find((cart) => cart.id == rowObj.id);
+    //   if (cartUpdate) {
+    //     if (soLuong) {
+    //       cartUpdate.quantityBuy += 1;
+    //     } else {
+    //       cartUpdate.quantityBuy -= 1;
+    //       if (cartUpdate.quantityBuy < 1) cartUpdate.quantityBuy = 1;
+    //     }
+    //   }
+    // },
+    changeQuantityCart: (state, action) => {
+      const { soLuong, rowObj } = action.payload;
+      const index = state.arrCart.findIndex((pro) => pro.id == rowObj.id);
+      if (soLuong) {
+        state.arrCart[index].quantityBuy += 1;
+      } else {
+        if (state.arrCart[index].quantityBuy > 1) {
+          state.arrCart[index].quantityBuy -= 1;
+        } else {
+          toastService.showToast(
+            "warning",
+            "Delete",
+            "Bạn đã xoá sản phẩm ra khỏi giỏ hàng !"
+          );
+          state.arrCart.splice(index, 1);
+        }
+      }
+    },
+    handleToggleProductCart: (state, action) => {
+      const row = action.payload;
+      const arrCartUpdate = state.arrCart.find(
+        (checkCart) => checkCart.id == row.id
+      );
+      if (arrCartUpdate) {
+        arrCartUpdate.isSelected = !arrCartUpdate.isSelected;
+      }
+    },
+    handleCheckAllToggleProductCart: (state, action) => {
+      const isCheckAll = action.payload;
+      state.arrCart.forEach((element) => {
+        element.isSelected = isCheckAll;
+      });
+    },
+    clearArrCartSelected: (state, action) => {
+      state.arrCart = state.arrCart.filter((x) => !x.isSelected);
+    },
   },
 });
 
@@ -50,6 +99,10 @@ export const {
   getProductDetailAction,
   changeQuantityBuy,
   addCart,
+  changeQuantityCart,
+  handleToggleProductCart,
+  handleCheckAllToggleProductCart,
+  clearArrCartSelected,
 } = productReducer.actions;
 
 export default productReducer.reducer;

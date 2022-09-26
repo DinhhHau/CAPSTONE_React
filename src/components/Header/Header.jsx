@@ -48,10 +48,9 @@ export default function Header() {
       <div className="header-content">
         <ul className="d-flex justify-content-around align-items-center">
           <li>
-            <NavLink>
-              <i className="fa-solid fa-magnifying-glass icon" />
+            <NavLink to={`/search`}>
+              <i className="las la-search fs-3" />
             </NavLink>
-            <NavLink className="text">Search</NavLink>
           </li>
           <li>
             <NavLink to={`/cart`}>

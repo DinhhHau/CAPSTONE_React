@@ -2,6 +2,7 @@ import Swal from "sweetalert2";
 
 const showToast = (icon, title, text) =>
   Swal.fire({
+    icon,
     title,
     text,
     toast: true,
@@ -9,7 +10,6 @@ const showToast = (icon, title, text) =>
     showConfirmButton: false,
     timer: 3000,
     timerProgressBar: true,
-    icon,
     didOpen: (toast) => {
       toast.addEventListener("mouseenter", Swal.stopTimer);
       toast.addEventListener("mouseleave", Swal.resumeTimer);
@@ -19,7 +19,23 @@ const showToast = (icon, title, text) =>
 1. call api service  để lấy data => then =>(data)=>{
     lấy data lưu vào
 }
-*/ 
+*/
+const showToastDelete = (icon, title, text) =>
+  Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire("Deleted!", "Your file has been deleted.", "success");
+    }
+  });
+
 export default {
-    showToast
+  showToast,
+  showToastDelete,
 };

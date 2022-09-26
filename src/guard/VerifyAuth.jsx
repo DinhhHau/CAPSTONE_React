@@ -9,11 +9,7 @@ const VerifyAuth = ({ children }) => {
 
   useEffect(() => {
     if (!isSignined) {
-      toastService.showToast(
-        "error",
-        "Invalid token",
-        "Please login !"
-      );
+      toastService.showToast("warning", "Invalid token", "Please login !");
       navigate("/login");
     }
   }, [isSignined]);

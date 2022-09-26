@@ -25,6 +25,7 @@ import { persister, store } from "./redux/configStroe";
 import { PersistGate } from "redux-persist/integration/react";
 import Carts from "./pages/Carts/Carts";
 import LoginFb from "./pages/Login/LoginFb/LoginFb";
+import Search from "./pages/Search/Search";
 
 // Cấu hình history (chuyển hướng không cần hook navigate )
 export const history = createBrowserHistory({ window });
@@ -43,7 +44,7 @@ root.render(
               <Route index element={<Home />}></Route>
               <Route path="/home" element={<Home />}></Route>
               <Route path="/loginfb" element={<LoginFb />}></Route>
-
+              <Route path="/search" element={<Search />}></Route>
 
               <Route path="detail">
                 <Route path=":id/:name" element={<Detail />}></Route>

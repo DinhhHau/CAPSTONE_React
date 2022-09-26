@@ -36,6 +36,7 @@ export default function LoginFb() {
           );
         }}
         icon="lab la-facebook"
+        textButton="Continue with Facebook"
       />
     </div>
   );

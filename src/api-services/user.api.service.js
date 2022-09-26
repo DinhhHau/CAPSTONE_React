@@ -11,8 +11,8 @@ class userApiService {
     return http.post(`/Users/getProfile`);
   }
 
-  userOrder() {
-    return http.post(`/Users/order`);
+  userOrder(data) {
+    return http.post(`/Users/order`, data);
   }
 }
 

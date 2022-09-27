@@ -169,6 +169,8 @@
   transition: all 0.3s ease-out;
 }
 .cart .row .col-3 .card {
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
   position: relative;
   -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
           box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
@@ -217,8 +219,8 @@
   width: 175px;
   border: none;
   background-color: #e1b067;
-  -webkit-transition: all 0.5s ease-out;
-  transition: all 0.5s ease-out;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
 }
 .cart .row .col-3 .card .btn-buy i {
   width: 50px;
@@ -237,18 +239,24 @@
   background-color: #dedddc;
   font-weight: 600;
   font-size: 24px;
-  -webkit-transition: all 0.5s ease-out;
-  transition: all 0.5s ease-out;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
 }
 .cart .row .col-3 .card:hover .icon {
   background-color: #f8b653;
 }
 .cart .row .col-3 .card:hover .btn-buy {
   background-color: #dedddc;
+  border-radius: 0 0 0 20px;
 }
 .cart .row .col-3 .card:hover .btn-price {
   background-color: #f8b653;
   color: #fffcfc;
+  border-radius: 0 0 20px 0;
+}
+.cart .row .col-3 .card:hover {
+  border: 1px solid #f8b653;
+  border-radius: 20px;
 }
 .cart .row .col-3:hover {
   -webkit-transform: translateY(-5px);

@@ -23,6 +23,8 @@
       margin-top: 40px !important;
       transition: all 0.3s ease-out;
       .card {
+        transition: all 0.1s;
+
         position: relative;
         box-shadow: 0 0 5px rgb(0 0 0 / 15%);
         background: #f8f8f8;
@@ -62,7 +64,7 @@
           width: 175px;
           border: none;
           background-color: $bg-yellow-2;
-          transition: all 0.5s ease-out;
+          transition: all 0.1s;
           i {
             width: 50px;
             // position: absolute;
@@ -84,18 +86,24 @@
           background-color: $bg-grey;
           font-weight: $fw-6;
           font-size: $fz-24;
-          transition: all 0.5s ease-out;
+          transition: all 0.1s;
         }
         &:hover .icon {
           background-color: $bg-yellow-1;
         }
         &:hover .btn-buy {
           background-color: $bg-grey;
+          border-radius: 0 0 0 20px;
         }
 
         &:hover .btn-price {
           background-color: $bg-yellow-1;
           color: $cl-text-whiteFC;
+          border-radius: 0 0 20px 0;
+        }
+        &:hover {
+          border: 1px solid #f8b653;
+          border-radius: 20px;
         }
       }
       &:hover {

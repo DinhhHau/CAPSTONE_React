@@ -16,20 +16,39 @@ export default function Register(props) {
       selector: "male",
     },
     validationSchema: Yup.object().shape({
-        email: Yup.string().required('Email không được bỏ trống !').email('email không đúng định dạng !'),
-        password: Yup.string().required('Password không được bỏ trống !').min(6,'pass từ 6 - 32 ký tự !').max(32,'pass từ 6 - 32 ký tự !'),
-        passwordConfirm: Yup.string().when("password", {
-          is: val => (val && val.length > 0 ? true : false),
-          then: Yup.string().oneOf(
-            [Yup.ref("password")],
-            "Cả hai mật khẩu cần phải giống nhau !!!"
-          )
-        }),
-        name: Yup.string().matches(/[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+$/,"Tên Không đúng định dạng !").required('Name không được bỏ trống !'),
-        phone: Yup.string().matches(/(84|0[3|5|7|8|9])+([0-9]{8})\b/,"Phone phải từ 03 05 07 08 09 và có 10 số!").required('Phone không được bỏ trống !'),
-      }),
+      email: Yup.string()
+        .required(" *** Email không được bỏ trống ***")
+        .email("*** Email không đúng định dạng ***"),
+      password: Yup.string()
+        .required(" *** Password không được bỏ trống ***")
+        .min(6, "*** Password từ 6 - 32 ký tự ***")
+        .max(32, "pass từ 6 - 32 ký tự !"),
+      // passwordConfirm: Yup.string().when("password", {
+      //   is: val => (val && val.length > 0 ? true : false),
+      //   then: Yup.string().oneOf(
+      //     [Yup.ref("password")],
+      //     "Cả hai mật khẩu cần phải giống nhau !!!"
+      //   )
+      // }),
+      passwordConfirm: Yup.string()
+        .required(" *** PasswordConfirm không được bỏ trống ***")
+        .oneOf([Yup.ref("password")], " *** Password phải trùng nhau ***"),
+      name: Yup.string()
+        .matches(
+          /[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+$/,
+          "*** Name Không đúng định dạng ***"
+        )
+        .required("*** Name không được bỏ trống ***"),
+      phone: Yup.string()
+        .matches(
+          /(84|0[3|5|7|8|9])+([0-9]{8})\b/,
+          " *** Phone phải từ 03 05 07 08 09 và có 10 số ***"
+        )
+        .required("*** Phone không được bỏ trống ***"),
+    }),
     onSubmit: (values) => {
       console.log(values);
+
       dispatch(registeApi(values));
     },
   });
@@ -42,7 +61,7 @@ export default function Register(props) {
         </div>
 
         <form className="form" id="formRegister" onSubmit={frm.handleSubmit}>
-        {/* <form className="form" id="formRegister" onSubmit={handleSubmit()}> */}
+          {/* <form className="form" id="formRegister" onSubmit={handleSubmit()}> */}
           <div className="reg-content">
             <div className="reg-left">
               <div className="material-form-field">
@@ -60,7 +79,11 @@ export default function Register(props) {
                 >
                   Email
                 </label>
-                {frm.errors.email && frm.touched.email ? <span className="text-danger">{frm.errors.email}</span> : ''}
+                {frm.errors.email && frm.touched.email ? (
+                  <span className="text-danger">{frm.errors.email}</span>
+                ) : (
+                  ""
+                )}
               </div>
               <div className="material-form-field">
                 <input
@@ -76,8 +99,11 @@ export default function Register(props) {
                 >
                   Password
                 </label>
-                {frm.errors.password && frm.touched.password ? <span className="text-danger">{frm.errors.password}</span> : ''}
-
+                {frm.errors.password && frm.touched.password ? (
+                  <span className="text-danger">{frm.errors.password}</span>
+                ) : (
+                  ""
+                )}
               </div>
               <div className="material-form-field">
                 <input
@@ -92,8 +118,13 @@ export default function Register(props) {
                 >
                   Password Confirm
                 </label>
-                {frm.errors.passwordConfirm ? <span className="text-danger">{frm.errors.passwordConfirm}</span> : ''}
-
+                {frm.errors.passwordConfirm ? (
+                  <span className="text-danger">
+                    {frm.errors.passwordConfirm}
+                  </span>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
             <div className="reg-right">
@@ -111,8 +142,11 @@ export default function Register(props) {
                 >
                   Name
                 </label>
-                {frm.errors.name && frm.touched.name ? <span className="text-danger">{frm.errors.name}</span> : ''}
-
+                {frm.errors.name && frm.touched.name ? (
+                  <span className="text-danger">{frm.errors.name}</span>
+                ) : (
+                  ""
+                )}
               </div>
               <div className="material-form-field">
                 <input
@@ -128,8 +162,11 @@ export default function Register(props) {
                 >
                   Phone
                 </label>
-                {frm.errors.phone && frm.touched.phone ? <span className="text-danger">{frm.errors.phone}</span> : ''}
-
+                {frm.errors.phone && frm.touched.phone ? (
+                  <span className="text-danger">{frm.errors.phone}</span>
+                ) : (
+                  ""
+                )}
               </div>
               <div id="gender" className="gender">
                 <span>Gender</span>

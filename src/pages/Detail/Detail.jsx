@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
+import ProductCart from "../../components/ProductCart/ProductCart";
 import {
   addCart,
   changeQuantityBuy,
@@ -104,30 +105,7 @@ export default function Detail() {
             {productDetail.relatedProducts?.map((item, index) => {
               return (
                 <div className="col-3" key={index}>
-                  <div className="card">
-                    <img src={item.image} alt={item.name} />
-                    <div className="card-body">
-                      <p className="text-top">{item.name}</p>
-                      <p className="text-bot">{item.shortDescription}</p>
-                    </div>
-                    <div className="d-flex">
-                      <NavLink
-                        className="btn-buy w-50"
-                        to={`/detail/${item.id}/${item.name}`}
-                      >
-                        <i className="fa-solid fa-cart-shopping icon" />
-                      </NavLink>
-                      {/* <button
-                      className="btn-buy w-50"
-                      onClick={() => {
-                        navigate(`/detail/${item.id}/${item.name}`);
-                      }}
-                    >
-                      <i className="fa-solid fa-cart-shopping icon" />
-                    </button> */}
-                      <button className="btn-price w-50">{item.price}$</button>
-                    </div>
-                  </div>
+                  <ProductCart product={item} />
                 </div>
               );
             })}

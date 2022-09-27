@@ -1,5 +1,5 @@
 import React from "react";
-import {NavLink} from "react-router-dom"
+import { NavLink } from "react-router-dom";
 
 export default function Menu() {
   return (
@@ -8,8 +8,13 @@ export default function Menu() {
         <div className="container-fluid">
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
-              <div className="nav-item nav-item-home">
-                <NavLink  to={`/`} className="nav-link active" aria-current="page" href="#">
+              <div className="nav-item">
+                <NavLink
+                  to={`/`}
+                  className="nav-link active"
+                  aria-current="page"
+                  href="#"
+                >
                   Home
                 </NavLink>
               </div>

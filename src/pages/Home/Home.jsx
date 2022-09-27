@@ -4,6 +4,7 @@ import axios from "axios";
 import { NavLink, useNavigate } from "react-router-dom";
 import { getProductApi } from "../../redux/reducers/productReducer";
 import { useEffect } from "react";
+import ProductCart from "../../components/ProductCart/ProductCart";
 
 export default function Home() {
   const { arrProduct } = useSelector((state) => state.productReducer);
@@ -24,27 +25,7 @@ export default function Home() {
     return arrProduct.map((item, index) => {
       return (
         <div className="col-3 mt-2" key={index}>
-          <div className="card">
-            <img src={item.image} alt={item.name} />
-            <div className="card-body">
-              <p className="text-top">{item.name}</p>
-              <p className="text-bot">{item.shortDescription}</p>
-            </div>
-            <div className="d-flex">
-              {/* <NavLink className="btn-buy w-50" to={`/detail/${item.id}/${item.name}`}>
-                <i className="fa-solid fa-cart-shopping icon" />
-              </NavLink> */}
-              <button
-                className="btn-buy w-50"
-                onClick={() => {
-                  navigate(`/detail/${item.id}/${item.name}`);
-                }}
-              >
-                <i className="fa-solid fa-cart-shopping icon" />
-              </button>
-              <button className="btn-price w-50">{item.price}$</button>
-            </div>
-          </div>
+          <ProductCart product={item} />
         </div>
       );
     });

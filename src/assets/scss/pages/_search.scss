@@ -35,19 +35,82 @@
     padding-left: 30px;
     color: #fff;
   }
+  .sort-input {
+    margin-top: 20px;
+    display: flex;
+    justify-content: end;
+  }
   .search-result {
-    padding-top: 40px;
-    .sort-input {
-      text-align: right;
-      label {
-        margin-right: 5px;
-      }
-      .ant-select-selector {
-        width: 120px !important;
-      }
-    }
+    padding-top: 20px;
     .result {
-      padding-top: 20px;
+      .row {
+        .col-3 {
+          margin-top: 40px !important;
+          transition: all 0.3s ease-out;
+          .card {
+            box-shadow: 0 0 5px rgb(0 0 0 / 15%);
+            background: #f8f8f8;
+            img {
+            }
+            .card-body {
+              text-align: left;
+              .text-top {
+                line-height: 29px;
+                @include text($fw-3, $fz-24, $cl-text-dark);
+              }
+              .text-bot {
+                line-height: 24px;
+                @include text($fw-3, $fz-20, $cl-text-grey);
+              }
+            }
+            .btn-buy {
+              position: relative;
+              padding: 14px 20px;
+              height: 64px;
+              width: 175px;
+              border: none;
+              background-color: $bg-yellow-2;
+              transition: all 0.5s ease-out;
+              i {
+                width: 50px;
+                position: absolute;
+                height: 50px;
+                line-height: 45px;
+                border-radius: 50%;
+                background-color: #666666;
+                color: #fff;
+                top: 8px;
+                left: 55px;
+                font-size: 1.6em;
+                border: 4px solid #ffffff;
+              }
+            }
+            .btn-price {
+              height: 64px;
+              width: 160px;
+              border: none;
+              background-color: $bg-grey;
+              font-weight: $fw-6;
+              font-size: $fz-24;
+              transition: all 0.5s ease-out;
+            }
+            &:hover .icon {
+              background-color: $bg-yellow-1;
+            }
+            &:hover .btn-buy {
+              background-color: $bg-grey;
+            }
+
+            &:hover .btn-price {
+              background-color: $bg-yellow-1;
+              color: $cl-text-whiteFC;
+            }
+          }
+          &:hover {
+            transform: translateY(-5px);
+          }
+        }
+      }
     }
   }
 }

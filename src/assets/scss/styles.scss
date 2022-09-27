@@ -2,11 +2,14 @@
 @import "./base/base";
 @import "./base/font";
 
-@import "./pages/header";
-@import "./pages/menu";
-@import "./pages/footer";
+//componetn
+@import "./component/Header/header";
+@import "./component/Menu/menu";
+@import "./component/Footer/footer";
+@import "././component/ProductCart/ProductCart";
+
+//pages
 @import "./pages/carousel";
-@import "./pages/cart";
 @import "./pages/deital";
 @import "./pages/register";
 @import "./pages/login";

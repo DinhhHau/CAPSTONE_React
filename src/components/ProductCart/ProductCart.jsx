@@ -6,6 +6,9 @@ export default function ProductCart(props) {
   const navigate = useNavigate();
   return (
     <div className="card">
+      <div className="favorite-item">
+        <i class="fa-solid fa-heart"></i>
+      </div>
       <img src={product.image} alt={product.name} />
       <div className="card-body">
         <p className="text-top">{product.name}</p>

@@ -24,7 +24,7 @@ export default function LoginFb() {
     <div className="facebook text-white">
       <FacebookLogin
         appId="1225213111592360"
-        autoLoad={true}
+        autoLoad={false}
         fields="name,email,picture"
         callback={responseFacebook}
         onClick={() => {

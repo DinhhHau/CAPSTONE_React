@@ -14,7 +14,6 @@ export default function Register(props) {
       name: "",
       phone: "",
       selector: "male",
-
     },
     validationSchema: Yup.object().shape({
         email: Yup.string().required('Email không được bỏ trống !').email('email không đúng định dạng !'),

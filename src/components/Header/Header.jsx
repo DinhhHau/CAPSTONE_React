@@ -55,7 +55,8 @@ export default function Header() {
           <li>
             <NavLink to={`/cart`}>
               <span>
-                <i className="las la-shopping-cart" />
+                {/* <i className="las la-shopping-cart" /> */}
+                <i className="las la-shopping-bag" />
               </span>
               <span>{arrCart?.length ? `(${arrCart.length})` : ""}</span>
             </NavLink>

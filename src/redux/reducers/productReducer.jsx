@@ -91,6 +91,18 @@ const productReducer = createSlice({
     clearArrCartSelected: (state, action) => {
       state.arrCart = state.arrCart.filter((x) => !x.isSelected);
     },
+    detleProduct: (state, action) => {
+      const rowObj = action.payload;
+      const index = state.arrCart.findIndex((pro) => pro.id == rowObj);
+      if (window.confirm("Bạn có muốn xoá phản phẩm không ?")) {
+        state.arrCart.splice(index, 1);
+      }
+      toastService.showToast(
+        "warning",
+        "Delete",
+        "Bạn đã xoá sản phẩm ra khỏi giỏ hàng !"
+      );
+    },
   },
 });
 
@@ -103,6 +115,7 @@ export const {
   handleToggleProductCart,
   handleCheckAllToggleProductCart,
   clearArrCartSelected,
+  detleProduct,
 } = productReducer.actions;
 
 export default productReducer.reducer;

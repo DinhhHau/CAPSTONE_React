@@ -13,20 +13,15 @@ export default function ProductCart(props) {
       <div className="card-body">
         <p className="text-top">{product.name}</p>
         <p className="text-bot">{product.shortDescription}</p>
+        <div className="text-price">${product.price}</div>
       </div>
-      <div className="d-flex">
-        {/* <NavLink className="btn-buy w-50" to={`/detail/${item.id}/${item.name}`}>
-                <i className="fa-solid fa-cart-shopping icon" />
-              </NavLink> */}
-        <button
-          className="btn-buy w-50"
+      <div className="text-center">
+        <i
+          className="icon fa-solid fa-cart-shopping icon"
           onClick={() => {
             navigate(`/detail/${product.id}/${product.name}`);
           }}
-        >
-          <i className="fa-solid fa-cart-shopping icon" />
-        </button>
-        <button className="btn-price w-50">{product.price}$</button>
+        />
       </div>
     </div>
   );

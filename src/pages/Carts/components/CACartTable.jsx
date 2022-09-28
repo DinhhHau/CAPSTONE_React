@@ -13,6 +13,7 @@ import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   changeQuantityCart,
+  detleProduct,
   handleCheckAllToggleProductCart,
   handleToggleProductCart,
 } from "../../../redux/reducers/productReducer";
@@ -113,8 +114,11 @@ export default function CACartTable() {
                 transform: "translateY(-0.25em)",
               },
             }}
+            onClick={() => {
+              dispatch(detleProduct({ rowObj }));
+            }}
           >
-            Delete
+            Delet
           </Button>
         </Box>
       ),

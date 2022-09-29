@@ -96,7 +96,8 @@ http.interceptors.response.use(
   (err) => {
     // const originalRequest = err.config;
     if (err.response.status === 400 || err.response.status === 404) {
-      history.push("/register");
+      // history.push("/register");
+      history.push("/registerfrm");
       return Promise.reject(err);
     }
     // console.log(err.response);

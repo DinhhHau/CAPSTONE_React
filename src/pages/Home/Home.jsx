@@ -36,7 +36,7 @@ export default function Home() {
       return (
         <div className={`carousel-item ${index === 0 && `active`}`} key={index}>
           {/* <div className={`carousel-item ${index === 0 ? `active` : ''}`} key={index}> */}
-          <div className="container d-flex align-items-center">
+          <div className="container-fluid d-flex align-items-center">
             <div className="items-left">
               <img src={item.image} alt="" />
             </div>
@@ -59,7 +59,7 @@ export default function Home() {
   };
 
   return (
-    <div className="conatiner-fluid">
+    <div className="carousel">
       <div
         id="carouselExampleCaptions"
         className="carousel slide"

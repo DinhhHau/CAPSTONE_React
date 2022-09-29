@@ -2,7 +2,8 @@
   margin-bottom: 50px;
   .container-fluid {
     padding-top: 30px;
-    .main {
+    background-color: white;
+    .main-detail {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -64,7 +65,6 @@
               box-shadow: none;
             }
           }
-          
         }
         .price {
           margin: 10px 0;
@@ -115,6 +115,7 @@
       }
     }
     .relateproduct {
+      background-color: white;
       margin-top: 10px;
       h4 {
         @include text($fw-4, $fz-40, $cl-text-dark);

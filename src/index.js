@@ -26,6 +26,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import Carts from "./pages/Carts/Carts";
 import LoginFb from "./pages/Login/LoginFb/LoginFb";
 import Search from "./pages/Search/Search";
+import RegisterForm from "./pages/Register/RegisterForm";
 
 // Cấu hình history (chuyển hướng không cần hook navigate )
 export const history = createBrowserHistory({ window });
@@ -41,6 +42,8 @@ root.render(
             <Route path="" element={<App />}>
               <Route path="login" element={<Login />}></Route>
               <Route path="register" element={<Register />}></Route>
+              <Route path="registerfrm" element={<RegisterForm />}></Route>
+
               <Route index element={<Home />}></Route>
               <Route path="/home" element={<Home />}></Route>
               <Route path="/loginfb" element={<LoginFb />}></Route>

@@ -3,7 +3,7 @@
   }
   .carousel-inner {
     .carousel-item {
-      .container {
+      .container-fluid {
         .items-left {
           width: 40%;
           margin-left: 100px;
@@ -30,7 +30,7 @@
             height: 50px;
             width: 150px;
             color: white;
-            background: #F8B653;
+            background: #f8b653;
             border-radius: 0px;
           }
         }

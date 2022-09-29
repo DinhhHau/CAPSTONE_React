@@ -41,3 +41,7 @@ export default function LoginFb() {
     </div>
   );
 }
+
+// "start": "export HTTPS=true&&PORT=3000 react-scripts start",            // mac
+// "start": "set HTTPS=true&&react-scripts start"                          // win
+// "start": "set HTTPS=true&& set PORT=3000  react-scripts start"          // mac or win

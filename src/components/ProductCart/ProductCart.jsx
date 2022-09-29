@@ -7,7 +7,7 @@ export default function ProductCart(props) {
   return (
     <div className="card">
       <div className="favorite-item">
-        <i class="fa-solid fa-heart"></i>
+        <i className="fa-solid fa-heart" />
       </div>
       <img src={product.image} alt={product.name} />
       <div className="card-body">

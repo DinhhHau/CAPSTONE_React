@@ -1,0 +1,13 @@
+.main-form {
+  background: white;
+  padding: 50px 0 0 0;
+}
+
+.container_form {
+  width: 900px;
+  background: #fff;
+  margin: 0 auto;
+  @include box-shadow(0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05));
+  @include border-radius(20px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}

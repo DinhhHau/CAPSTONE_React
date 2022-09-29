@@ -23,16 +23,16 @@ export default function Register(props) {
         .required(" *** Password không được bỏ trống ***")
         .min(6, "*** Password từ 6 - 32 ký tự ***")
         .max(32, "pass từ 6 - 32 ký tự !"),
-      // passwordConfirm: Yup.string().when("password", {
-      //   is: val => (val && val.length > 0 ? true : false),
-      //   then: Yup.string().oneOf(
-      //     [Yup.ref("password")],
-      //     "Cả hai mật khẩu cần phải giống nhau !!!"
-      //   )
-      // }),
-      passwordConfirm: Yup.string()
-        .required(" *** PasswordConfirm không được bỏ trống ***")
-        .oneOf([Yup.ref("password")], " *** Password phải trùng nhau ***"),
+      passwordConfirm: Yup.string().when("password", {
+        is: (val) => (val && val.length > 0 ? true : false),
+        then: Yup.string().oneOf(
+          [Yup.ref("password")],
+          "Cả hai mật khẩu cần phải giống nhau !!!"
+        ),
+      }),
+      // passwordConfirm: Yup.string()
+      //   .required(" *** PasswordConfirm không được bỏ trống ***")
+      //   .oneOf([Yup.ref("password")], " *** Password phải trùng nhau ***"),
       name: Yup.string()
         .matches(
           /[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+$/,
@@ -55,7 +55,7 @@ export default function Register(props) {
 
   return (
     <div className="register">
-      <div className="container">
+      <div className="container-register">
         <div className="title">
           <p>Register</p>
         </div>

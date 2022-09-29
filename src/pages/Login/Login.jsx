@@ -98,7 +98,7 @@ export default function Login(props) {
           )}
         </div>
         <div className="form-group register d-flex">
-          <NavLink to={`/register`}>Register now ?</NavLink>
+          <NavLink to={`/registerfrm`}>Register now ?</NavLink>
           <button className="btn btn-success" type="submit">
             Login
           </button>

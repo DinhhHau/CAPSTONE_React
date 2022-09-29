@@ -1,5 +1,5 @@
 //rafce
-import React from "react";
+import React, { useEffect } from "react";
 import CACartView from "./components/CACartView";
 
 const Carts = () => {

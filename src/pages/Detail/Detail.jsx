@@ -32,7 +32,7 @@ export default function Detail() {
   return (
     <div className="detail">
       <div className="container-fluid">
-        <div className="main">
+        <div className="main-detail">
           <img
             className="img"
             id="prod-img"
@@ -85,7 +85,7 @@ export default function Detail() {
               </button>
             </div>
             <button
-              className="add-cart"
+              className="add-cart mt-3"
               onClick={() => {
                 toastService.showToast(
                   "success",
@@ -99,9 +99,9 @@ export default function Detail() {
             </button>
           </div>
         </div>
-        <div className="relateproduct cart container-fluid">
+        <div className="relateproduct cart ">
           <h4>- Related Product -</h4>
-          <div className="row conatiner">
+          <div className="row">
             {productDetail.relatedProducts?.map((item, index) => {
               return (
                 <div className="col-3" key={index}>

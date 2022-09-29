@@ -28,7 +28,7 @@ export default function Header() {
   // );
   const renderRegisterNavItem = () => {
     if (userLogin == null) {
-      return <NavLink to={`/register`}>Register</NavLink>;
+      return <NavLink to={`/registerfrm`}>Register</NavLink>;
     } else {
       return <></>;
     }

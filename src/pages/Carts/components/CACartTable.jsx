@@ -21,7 +21,6 @@ import {
 export default function CACartTable() {
   const dispatch = useDispatch();
   const { arrCart } = useSelector((state) => state.productReducer);
-
   const columns = [
     { id: "id", name: "id" },
     {

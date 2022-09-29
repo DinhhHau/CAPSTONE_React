@@ -1,9 +1,11 @@
 .register {
+  background-color: white;
+
   input::placeholder {
     line-height: 36.31px;
     @include text($fw-4, $fz-16, $cl-text-dark);
   }
-  .container {
+  .container-register {
     .title {
       p {
         @include text($fw-4, $fz-40, $cl-text-dark);

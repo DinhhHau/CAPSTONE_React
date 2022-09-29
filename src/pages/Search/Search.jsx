@@ -60,7 +60,7 @@ export default function Search(props) {
   const renderSearchProduct = () => {
     return arrProduct.map((item, index) => {
       return (
-        <div className="col-3  mt-2" key={index}>
+        <div className="col-4  mt-2" key={index}>
           <ProductCart product={item} />
         </div>
       );
@@ -104,11 +104,9 @@ export default function Search(props) {
           </FormControl>
         </Box>
       </div>
-      <div className="search-result">
+      <div className="cart">
         <div className="container-fluid d-flex justify-content-end">
-          <div className="result">
-            <div className="row">{renderSearchProduct()}</div>
-          </div>
+          <div className="row">{renderSearchProduct()}</div>
         </div>
       </div>
     </section>

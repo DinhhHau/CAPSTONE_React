@@ -7,6 +7,7 @@ import LoadingButton from "@mui/lab/LoadingButton";
 import { useMutation } from "@tanstack/react-query";
 import userApiService from "../../../api-services/user.api.service";
 import toastService from "../../../util/toast.service";
+import empty_cart from "../../../assets/img/empty-cart.gif";
 
 const CACartView = () => {
   const dispatch = useDispatch();
@@ -30,72 +31,80 @@ const CACartView = () => {
     //     <div className="col-12"></div>
     //     <div className="col-12"></div>
     // </div>
+
     <Container className="ordercarts">
-      <Grid container spacing={2} className="ordercarts_container">
-        <Grid item xs={12} className="ordercarts_gird1">
-          <Typography variant="h2">Carts</Typography>
+      {arrCart?.length > 0 ? (
+        <Grid container spacing={2} className="ordercarts_container">
+          <Grid item xs={12} className="ordercarts_gird1">
+            <Typography variant="h2">Carts</Typography>
+          </Grid>
+          <Grid item xs={12} className="ordercarts_gird2">
+            <Divider />
+          </Grid>
+          <Grid item xs={12} className="ordercarts_gird3">
+            <span>
+              {arrCart?.length
+                ? `Selected (${
+                    arrCart?.filter((x) => x.isSelected).length
+                  }) items`
+                : ""}
+            </span>
+          </Grid>
+          <Grid item xs={12} className="ordercarts_gird4">
+            <CACartTable />
+          </Grid>
+          <Grid item sx={12} className="ordercarts_gird5 mt-2">
+            <LoadingButton
+              variant="contained"
+              className="btn-order"
+              sx={{
+                padding: "10px 34px",
+                background: "#f2994a",
+                color: "#fff",
+                transition: "all 0.3s ease",
+                border: "none",
+                ":hover": {
+                  boxShadow:
+                    "0px 8px 10px rgb(0 0 0 / 14%), 0px 3px 14px rgb(0 0 0 / 12%),0px 5px 5px rgb(0 0 0 / 20%)",
+                  transform: "translateY(-0.25em)",
+                },
+              }}
+              onClick={(e) => {
+                // {
+                //   "orderDetail": [
+                //     {
+                //       "productId": "string",
+                //       "quantity": 0
+                //     }
+                //   ],
+                //   "email": "string"
+                // }
+                const payload = {
+                  orderDetail: arrCart
+                    .filter((x) => x.isSelected)
+                    .map((item) => ({
+                      productId: item.id,
+                      quantity: item.quantityBuy,
+                    })),
+                  email: userLogin.email,
+                };
+                mOrder.mutate(payload);
+              }}
+              disabled={
+                !arrCart.filter((x) => x.isSelected) ||
+                arrCart.filter((x) => x.isSelected).length === 0
+              }
+            >
+              SUBMIT ORDER
+            </LoadingButton>
+          </Grid>
         </Grid>
-        <Grid item xs={12} className="ordercarts_gird2">
-          <Divider />
-        </Grid>
-        <Grid item xs={12} className="ordercarts_gird3">
-          <span>
-            {arrCart?.length
-              ? `Selected (${
-                  arrCart?.filter((x) => x.isSelected).length
-                }) items`
-              : ""}
-          </span>
-        </Grid>
-        <Grid item xs={12} className="ordercarts_gird4">
-          <CACartTable />
-        </Grid>
-        <Grid item sx={12} className="ordercarts_gird5 mt-2">
-          <LoadingButton
-            variant="contained"
-            className="btn-order"
-            sx={{
-              padding: "10px 34px",
-              background: "#f2994a",
-              color: "#fff",
-              transition: "all 0.3s ease",
-              border: "none",
-              ":hover": {
-                boxShadow:
-                  "0px 8px 10px rgb(0 0 0 / 14%), 0px 3px 14px rgb(0 0 0 / 12%),0px 5px 5px rgb(0 0 0 / 20%)",
-                transform: "translateY(-0.25em)",
-              },
-            }}
-            onClick={(e) => {
-              // {
-              //   "orderDetail": [
-              //     {
-              //       "productId": "string",
-              //       "quantity": 0
-              //     }
-              //   ],
-              //   "email": "string"
-              // }
-              const payload = {
-                orderDetail: arrCart
-                  .filter((x) => x.isSelected)
-                  .map((item) => ({
-                    productId: item.id,
-                    quantity: item.quantityBuy,
-                  })),
-                email: userLogin.email,
-              };
-              mOrder.mutate(payload);
-            }}
-            disabled={
-              !arrCart.filter((x) => x.isSelected) ||
-              arrCart.filter((x) => x.isSelected).length === 0
-            }
-          >
-            SUBMIT ORDER
-          </LoadingButton>
-        </Grid>
-      </Grid>
+      ) : (
+        <div className="div-img text-center">
+          <h2>Không có sản phẩm nào trong giỏ hàng.</h2>
+          <img src={empty_cart} alt="" />
+        </div>
+      )}
     </Container>
   );
 };

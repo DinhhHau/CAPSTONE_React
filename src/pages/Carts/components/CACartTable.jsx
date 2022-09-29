@@ -10,6 +10,7 @@ import TableRow from "@mui/material/TableRow";
 import { IconMinus, IconPlus } from "@tabler/icons";
 import _ from "lodash";
 import * as React from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   changeQuantityCart,
@@ -41,7 +42,7 @@ export default function CACartTable() {
             // size="small"
             onClick={() => {
               const action = { soLuong: false, rowObj };
-              dispatch(changeQuantityCart(action));
+            dispatch(changeQuantityCart(action));
             }}
           >
             <IconMinus />
@@ -131,13 +132,14 @@ export default function CACartTable() {
             <TableCell>
               <Checkbox
                 checked={
-                  arrCart.filter((x) => x.isSelected).length === arrCart.length
+                  arrCart.filter((x) => x.isSelected).length === arrCart.length // nó hình
                 }
                 indeterminate={
                   arrCart.filter((x) => x.isSelected).length > 0 &&
                   arrCart.filter((x) => x.isSelected).length !== arrCart.length
                 }
-                onChange={(e) => {
+                // à đâu :))) tui nhầm `, kh phai tất cả ;)) tui đang cấn chỗ dùng fonst gg nữa á ông
+                onChange={(e) => { 
                   dispatch(handleCheckAllToggleProductCart(e.target.checked));
                 }}
               />

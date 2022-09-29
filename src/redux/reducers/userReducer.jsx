@@ -52,10 +52,14 @@ export const registeApi = (user) => {
       //   window.location.reload();
       history.push("/login");
       // alert(result.data.message);
-      toastService.showToast("success", "Successfully", result.data.message);
+      toastService.showToast(
+        "success",
+        "Successfully",
+        "Success account register !"
+      );
     } catch (err) {
       // alert(err.response?.data.message);
-      toastService.showToast("error", "Failed", err.response?.data.message);
+      toastService.showToast("error", "Failed", " Email already use");
     }
   };
 };
@@ -70,7 +74,7 @@ export const loginApi = (userLogin) => {
       setCookie(ACCESS_TOKEN, result.data.content.accessToken, 20);
       setStore(ACCESS_TOKEN, result.data.content.accessToken);
       // chuyển hướng trang
-      history.push("/cart");
+      history.push("/home");
       //
       toastService.showToast(
         "success",
@@ -121,3 +125,5 @@ export const getProfileApi = (accessToken = getStore(ACCESS_TOKEN)) => {
 //     }
 //   };
 // };
+
+//

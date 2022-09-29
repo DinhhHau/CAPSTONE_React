@@ -8,6 +8,9 @@ import { useMutation } from "@tanstack/react-query";
 import { v4 } from "uuid";
 import userApiService from "../../api-services/user.api.service";
 import toastService from "../../util/toast.service";
+import axios from "axios";
+import { http } from "../../util/tools";
+import { deteleOrderApi } from "../../redux/reducers/productReducer";
 
 export default function Profile() {
   const { userLogin } = useSelector((state) => state.userReducer);
@@ -39,8 +42,12 @@ export default function Profile() {
   useEffect(() => {
     console.log(userLogin);
     frmProfile.resetForm({
-      values: { ...userLogin, password: ""},
+      values: { ...userLogin, password: "" },
     });
+  }, []);
+
+  useEffect(() => {
+    dispatch(getProfileApi());
   }, [userLogin]);
 
   const frmProfile = useFormik({
@@ -59,7 +66,7 @@ export default function Profile() {
         // .required("Password không được bỏ trống !")
         .min(6, "pass từ 6 - 32 ký tự !")
         .max(32, "pass từ 6 - 32 ký tự !"),
-        // .nullable(true),
+      // .nullable(true),
       name: Yup.string()
         .matches(
           /[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+$/,
@@ -304,6 +311,7 @@ export default function Profile() {
                         <th>Price</th>
                         <th>Quantity</th>
                         <th>Total</th>
+                        <th></th>
                       </tr>
                     </thead>
                     <tbody className="tbody">
@@ -325,6 +333,15 @@ export default function Profile() {
                             <td>{item.quantity}</td>
                             <td>
                               {(item.price * item.quantity).toLocaleString()} $
+                            </td>
+                            <td>
+                              <i
+                                className="las la-trash-alt text-danger fs-4"
+                                onClick={() => {
+                                  let orderid = { orderId: orderItem?.id };
+                                  dispatch(deteleOrderApi(orderid));
+                                }}
+                              />
                             </td>
                           </tr>
                         );

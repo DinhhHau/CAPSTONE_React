@@ -24,13 +24,13 @@
         flex: 0 0 50%;
         h3 {
           line-height: 36px;
-          @include text($fw-3, $fz-30, $cl-text-dark);
+          @include text($fw-6, $fz-30, $cl-text-dark);
         }
         span {
           display: block;
           // margin-bottom: 15px;
           line-height: 19px;
-          @include text($fw-4, $fz-16, $cl-text-black);
+          @include text($fw-3, $fz-16, $cl-text-black);
         }
         .text-success {
           margin-top: 1em !important;
@@ -38,7 +38,7 @@
           @include text(
             $fw-5 !important,
             $fz-24 !important,
-            $cl-text-green !important
+            $cl-text-dark !important
           );
         }
         .size {
@@ -49,8 +49,8 @@
             margin-right: 20px;
             line-height: 29px;
             padding: 10px 0;
-            background-color: $bg-grey-C;
-            @include text($fw-6, $fz-24, $cl-text-black-2);
+            // background-color: $bg-grey-C;
+            @include text($fw-6, $fz-24, $cl-text-grey-2);
             &:hover {
               background-color: #e1b067;
             }
@@ -69,7 +69,7 @@
         .price {
           margin: 10px 0;
           line-height: 36px;
-          @include text($fw-6, $fz-30, $cl-text-red);
+          @include text($fw-4, $fz-24, $cl-text-dark);
         }
         .amount {
           display: flex;
@@ -77,11 +77,13 @@
           align-items: baseline;
           .plus {
             border: none;
-            width: 50px;
-            height: 50px;
-            background: $bg-blue-primary;
-            line-height: 36.31px;
-            @include text($fw-4, $fz-30, $cl-text-whiteFC);
+            width: 40px;
+            height: 40px;
+            background: #6c757d;
+            line-height: 10px;
+            font-weight: 400;
+            font-size: 30px;
+            color: #fffcfc;
           }
           p {
             margin-top: 8px;
@@ -90,26 +92,28 @@
           }
           .minus {
             border: none;
-            width: 50px;
-            height: 50px;
-            background: $bg-blue-primary;
-            line-height: 36.31px;
-            @include text($fw-4, $fz-30, $cl-text-whiteFC);
+            width: 40px;
+            height: 40px;
+            background: #6c757d;
+            line-height: 10px;
+            font-weight: 400;
+            font-size: 30px;
+            color: #fffcfc;
           }
         }
         .add-cart {
           border: none;
-          background-image: linear-gradient(120deg, #d017ee, #3e20f8);
+          background-image: linear-gradient(120deg, #ffc107, $bg-grey-C);
           text-align: center;
           width: 175px;
           height: 64px;
-          transition: all 0.7s ease-out;
+          transition: all 0.7s ease-in-out !important;
           a {
             line-height: 65px;
             @include text($fw-5, $fz-24, $cl-text-whiteF8);
           }
           &:hover {
-            background-image: linear-gradient(120deg, #3e20f8, #d017ee);
+            background-image: linear-gradient(120deg, $bg-grey-C, #ffc107);
           }
         }
       }

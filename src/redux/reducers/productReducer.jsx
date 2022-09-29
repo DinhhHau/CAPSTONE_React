@@ -63,14 +63,15 @@ const productReducer = createSlice({
       } else {
         if (state.arrCart[index].quantityBuy > 1) {
           state.arrCart[index].quantityBuy -= 1;
-        } else {
-          toastService.showToast(
-            "warning",
-            "Delete",
-            "Bạn đã xoá sản phẩm ra khỏi giỏ hàng !"
-          );
-          state.arrCart.splice(index, 1);
         }
+        // else {
+        //   toastService.showToast(
+        //     "warning",
+        //     "Delete",
+        //     "Bạn đã xoá sản phẩm ra khỏi giỏ hàng !"
+        //   );
+        //   state.arrCart.splice(index, 1);
+        // }
       }
     },
     handleToggleProductCart: (state, action) => {
@@ -83,6 +84,7 @@ const productReducer = createSlice({
       }
     },
     handleCheckAllToggleProductCart: (state, action) => {
+      console.log(action.payload);
       const isCheckAll = action.payload;
       state.arrCart.forEach((element) => {
         element.isSelected = isCheckAll;
@@ -141,6 +143,20 @@ export const getDetailApi = (id) => {
     try {
       const result = await http.get(`/Product/getbyid?id=${id}`);
       disptach(getProductDetailAction(result.data.content));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+export const deteleOrderApi = (orderId) => {
+  return async (disptach) => {
+    try {
+      const result = await http.post(`/Users/deleteOrder`, orderId);
+      toastService.showToast(
+        "success",
+        "Successfully",
+        "Delete order successfully ! "
+      );
     } catch (err) {
       console.log(err);
     }

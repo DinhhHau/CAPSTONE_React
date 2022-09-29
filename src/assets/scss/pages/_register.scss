@@ -63,6 +63,7 @@
           .gender {
             margin-top: 30px;
             display: flex;
+            gap: 30px;
             span {
               line-height: 36.31px;
               @include text($fw-4, $fz-30, $cl-text-dark);

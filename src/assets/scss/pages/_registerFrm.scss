@@ -10,7 +10,7 @@
   // margin-bottom: 150px;
 }
 .signup-content {
-  @extend display-flex;
+  display: flex;
   padding: 75px 0;
 }
 .signup-form,
@@ -147,11 +147,15 @@ figure {
   font-size: 30px;
   margin-left: 60px;
 }
+.form-title {
+  font-weight: 700;
+}
 //
 .gender {
   margin-top: 30px;
   display: flex;
   align-items: center;
+  gap: 30px;
   span {
     margin-bottom: 20px;
     line-height: 36.31px;

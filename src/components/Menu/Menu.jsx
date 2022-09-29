@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom";
 
 export default function Menu() {
   return (
-    <div>
-      <nav className="navbar navbar-expand-lg bg-light">
+    <div className="menu bg-light">
+      <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">

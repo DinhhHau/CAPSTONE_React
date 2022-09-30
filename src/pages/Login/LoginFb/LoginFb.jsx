@@ -1,11 +1,15 @@
 import axios from "axios";
 import React from "react";
 import FacebookLogin from "react-facebook-login";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { history } from "../../../index";
+import { getProfileApi } from "../../../redux/reducers/userReducer";
 import toastService from "../../../util/toast.service";
 import { ACCESS_TOKEN, setStore } from "../../../util/tools";
 
 export default function LoginFb() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const responseFacebook = (response) => {
     axios({
@@ -15,9 +19,13 @@ export default function LoginFb() {
         facebookToken: response.accessToken,
       },
     }).then((res) => {
+      // Move to home after logging in successfully
+      history.push("/home");
       // Lưu vào localstorage
       //   localStorage.setItem("accessToken", res.data.content.accessToken);
-      setStore(ACCESS_TOKEN, res.data.content.accessToken); // hàm có sẵn trong tool
+      setStore(ACCESS_TOKEN, res.data.content.accessToken);
+      // Dispatch action getProfile after logging in successfully
+      dispatch(getProfileApi());
     });
   };
   return (

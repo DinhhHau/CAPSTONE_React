@@ -74,7 +74,7 @@ export const loginApi = (userLogin) => {
       setCookie(ACCESS_TOKEN, result.data.content.accessToken, 20);
       setStore(ACCESS_TOKEN, result.data.content.accessToken);
       // chuyển hướng trang
-      history.push("/home");
+      history.push("/cart");
       //
       toastService.showToast(
         "success",

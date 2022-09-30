@@ -7,6 +7,7 @@ import { useState } from "react";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { loginApi } from "../../redux/reducers/userReducer";
+import signin from "../../assets/img/signin-image.jpg";
 import toastService from "../../util/toast.service";
 import LoginFb from "./LoginFb/LoginFb";
 
@@ -33,7 +34,7 @@ export default function Login(props) {
         .email("Email không đúng định dạng !"),
       password: Yup.string()
         .required("Password không được bỏ trống !")
-        .min(1, "pass từ 6 - 32 ký tự !")
+        .min(6, "pass từ 6 - 32 ký tự !")
         .max(32, "pass từ 6 - 32 ký tự !"),
       // .matches(/cybersoft/, 'password không đúng đinh dạng !')
     }),
@@ -43,71 +44,101 @@ export default function Login(props) {
     },
   });
   return (
-    <form className="form-login" onSubmit={frm.handleSubmit}>
-      <div className="title my-5">
-        <h3>Login</h3>
-      </div>
-      <div className="mid">
-        <div className="form-group">
-          <p>Email</p>
-          <input
-            className="form-control mb-1"
-            id="email"
-            name="email"
-            placeholder="email"
-            onChange={frm.handleChange}
-            onBlur={frm.handleBlur}
-          />
-          {frm.errors.email && frm.touched.email ? (
-            <span className="text-danger">{frm.errors.email}</span>
-          ) : (
-            ""
-          )}
-        </div>
-        <div className="form-group">
-          <p>Password</p>
-          <div className="show-pass" style={{ position: "relative" }}>
-            <input
-              type={passwordShow ? "text" : "password"}
-              className="form-control mb-1"
-              id="password"
-              name="password"
-              placeholder="password"
-              onChange={frm.handleChange}
-              onBlur={frm.handleBlur}
-            />
-            <button
-              type="button"
-              className="show"
-              style={{
-                position: "absolute",
-                top: 8.5,
-                right: 10,
-                border: "none",
-                opacity: "0.5",
-              }}
-              onClick={togglePassword}
-            >
-              <i>{eye}</i>
-            </button>
+    <section className="sign-in">
+      <div className="container_form">
+        <div className="signin-content">
+          <div className="signin-image">
+            <figure>
+              <img src={signin} alt="sing up image" />
+            </figure>
           </div>
-          {frm.errors.password && frm.touched.password ? (
-            <span className="text-danger">{frm.errors.password}</span>
-          ) : (
-            ""
-          )}
-        </div>
-        <div className="form-group register d-flex">
-          <NavLink to={`/registerfrm`}>Register now ?</NavLink>
-          <button className="btn btn-success" type="submit">
-            Login
-          </button>
-        </div>
-        <div className="form-group fb-connect">
-          <LoginFb />
+          <div className="signin-form">
+            <h2 className="form-title">Login</h2>
+            <form
+              className="register-form"
+              id="register-form"
+              onSubmit={frm.handleSubmit}
+            >
+              <div className="d-flex flex-row align-items-center mb-4">
+                <i className="fas fa-user fa-lg me-3 fa-fw" />
+                <div className="form-outline flex-fill mb-0">
+                  <input
+                    className="form-control"
+                    id="email"
+                    name="email"
+                    required
+                    placeholder="Your Email"
+                    onChange={frm.handleChange}
+                    onBlur={frm.handleBlur}
+                  />
+                  <div className="text-danger position-absolute mt-1">
+                    {frm.errors.email && frm.touched.email ? (
+                      <span className="text-danger">{frm.errors.email}</span>
+                    ) : (
+                      ""
+                    )}
+                  </div>
+                </div>
+              </div>
+              <div className="d-flex flex-row align-items-center mb-4">
+                <i className="fas fa-lock fa-lg me-3 fa-fw" />
+                <div
+                  className="form-outline flex-fill mb-0"
+                  style={{ position: "relative" }}
+                >
+                  <input
+                    type={passwordShow ? "text" : "password"}
+                    className="form-control"
+                    id="password"
+                    name="password"
+                    required
+                    placeholder="Your Password"
+                    onChange={frm.handleChange}
+                    onBlur={frm.handleBlur}
+                  />
+                  <div className="text-danger position-absolute mt-1">
+                    {frm.errors.password && frm.touched.password ? (
+                      <span className="text-danger">{frm.errors.password}</span>
+                    ) : (
+                      ""
+                    )}
+                  </div>
+                  <button
+                    type="button"
+                    className="show"
+                    style={{
+                      position: "absolute",
+                      top: 8.5,
+                      right: 10,
+                      border: "none",
+                      opacity: "0.5",
+                      background: "none",
+                    }}
+                    onClick={togglePassword}
+                  >
+                    <i>{eye}</i>
+                  </button>
+                </div>
+              </div>
+              <div class="form-group register d-flex justify-content-start align-items-baseline gap-3 ms-5 mt-5">
+                <button class="btn btn-success" type="submit">
+                  Login
+                </button>
+                <a class="" href="/registerfrm">
+                  Register now ?
+                </a>
+              </div>
+            </form>
+            <div
+              className="mt-3 ms-5
+            "
+            >
+              <LoginFb />
+            </div>
+          </div>
         </div>
       </div>
-    </form>
+    </section>
   );
 }
 

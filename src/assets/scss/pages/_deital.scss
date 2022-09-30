@@ -121,8 +121,11 @@
       background-color: white;
       margin-top: 10px;
       h4 {
-        @include text($fw-4, $fz-40, $cl-text-dark);
-        margin-bottom: 50px;
+        @include text($fw-6, $fz-40, $cl-text-dark);
+        font-weight: 700;
+        margin-bottom: 20px;
+        margin-top: 50px;
+        text-align: center;
       }
     }
   }

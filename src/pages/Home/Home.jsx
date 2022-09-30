@@ -86,7 +86,7 @@ export default function Home() {
         </button>
       </div>
       {/*  */}
-      <div className="cart container-fluid mt-5">
+      <div className="cart container-fluid mt-3">
         <div className="content text-white">
           <h1>Product Feature</h1>
         </div>

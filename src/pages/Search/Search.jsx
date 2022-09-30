@@ -21,10 +21,10 @@ export default function Search(props) {
   let [arrProduct, setArrProduct] = useState([]);
   //select
   const { Option } = Select;
-  const [sortby, setSortby] = React.useState("");
-  const handleChangemui = (event) => {
-    setSortby(event.target.value);
-  };
+  // const [sortby, setSortby] = React.useState("");
+  // const handleChangemui = (event) => {
+  //   setSortby(event.target.value);
+  // };
   const getProductBySort = (value) => {
     let arrProductSort = _.sortBy(arrProduct, [(item) => item.price]);
     if (value === "descending") {

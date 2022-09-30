@@ -177,7 +177,8 @@ export default function RegisterForm() {
                       onBlur={frm.handleBlur}
                     />
                     <div className="text-danger position-absolute mt-1">
-                      {frm.errors.passwordConfirm ? (
+                      {frm.errors.passwordConfirm &&
+                      frm.touched.passwordConfirm ? (
                         <span className="text-danger">
                           {frm.errors.passwordConfirm}
                         </span>

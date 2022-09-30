@@ -70,10 +70,10 @@ export default function Search(props) {
   return (
     <section className="search">
       <div className="search-input">
-        <div className="container-fluid">
+        <div className="container-fluid mx-3">
           <label className="m">Search</label>
           <form
-            className=" form d-flex justify-content-start "
+            className=" form d-flex justify-content-start align-items-center "
             onSubmit={handleSubmit}
           >
             <Input

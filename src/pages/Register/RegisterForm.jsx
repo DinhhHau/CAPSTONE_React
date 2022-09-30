@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import singup from "../../assets/img/signup-image.jpg";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { registeApi } from "../../redux/reducers/userReducer";
 import { NavLink } from "react-router-dom";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+const eye = <FontAwesomeIcon icon={faEye} />;
 export default function RegisterForm() {
+  // show pass
+  const [passwordShow, setPasswordShow] = useState(false);
+  const togglePassword = () => {
+    setPasswordShow(!passwordShow);
+  };
+  //
   const dispatch = useDispatch();
   const frm = useFormik({
     initialValues: {
@@ -111,8 +120,12 @@ export default function RegisterForm() {
                 </div>
                 <div className="d-flex flex-row align-items-center mb-4">
                   <i className="fas fa-lock fa-lg me-3 fa-fw" />
-                  <div className="form-outline flex-fill mb-0">
+                  <div
+                    className="form-outline flex-fill mb-0"
+                    style={{ position: "relative" }}
+                  >
                     <input
+                      type={passwordShow ? "text" : "password"}
                       className="form-control"
                       id="password"
                       name="password"
@@ -130,12 +143,31 @@ export default function RegisterForm() {
                         ""
                       )}
                     </div>
+                    <button
+                      type="button"
+                      className="show"
+                      style={{
+                        position: "absolute",
+                        top: 8.5,
+                        right: 10,
+                        border: "none",
+                        opacity: "0.5",
+                        background: "none",
+                      }}
+                      onClick={togglePassword}
+                    >
+                      <i>{eye}</i>
+                    </button>
                   </div>
                 </div>
                 <div className="d-flex flex-row align-items-center mb-4">
                   <i className="fas fa-key fa-lg me-3 fa-fw" />
-                  <div className="form-outline flex-fill mb-0">
+                  <div
+                    className="form-outline flex-fill mb-0"
+                    style={{ position: "relative" }}
+                  >
                     <input
+                      type={passwordShow ? "text" : "password"}
                       className="form-control"
                       id="passwordConfirm"
                       name="passwordConfirm"
@@ -145,8 +177,7 @@ export default function RegisterForm() {
                       onBlur={frm.handleBlur}
                     />
                     <div className="text-danger position-absolute mt-1">
-                      {frm.errors.passwordConfirm &&
-                      frm.touched.passwordConfirm ? (
+                      {frm.errors.passwordConfirm ? (
                         <span className="text-danger">
                           {frm.errors.passwordConfirm}
                         </span>
@@ -154,6 +185,21 @@ export default function RegisterForm() {
                         ""
                       )}
                     </div>
+                    <button
+                      type="button"
+                      className="show"
+                      style={{
+                        position: "absolute",
+                        top: 8.5,
+                        right: 10,
+                        border: "none",
+                        opacity: "0.5",
+                        background: "none",
+                      }}
+                      onClick={togglePassword}
+                    >
+                      <i>{eye}</i>
+                    </button>
                   </div>
                 </div>
                 <div className="d-flex flex-row align-items-center mb-4">

@@ -3,16 +3,22 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 import { getProfileApi } from "../../redux/reducers/userReducer";
-// const eye = <FontAwesomeIcon icon={faEye} />;
 import { useMutation } from "@tanstack/react-query";
 import { v4 } from "uuid";
 import userApiService from "../../api-services/user.api.service";
 import toastService from "../../util/toast.service";
-import axios from "axios";
-import { http } from "../../util/tools";
 import { deteleOrderApi } from "../../redux/reducers/productReducer";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+const eye = <FontAwesomeIcon icon={faEye} />;
 export default function Profile() {
+  // show pass
+  const [passwordShow, setPasswordShow] = useState(false);
+  const togglePassword = () => {
+    setPasswordShow(!passwordShow);
+  };
+  //
   const { userLogin } = useSelector((state) => state.userReducer);
   const [updateKey, setUpdateKey] = useState("hello");
   const dispatch = useDispatch();
@@ -177,22 +183,40 @@ export default function Profile() {
                   >
                     Password
                   </label>
-                  <input
-                    id="password"
-                    name="password"
-                    type="text"
-                    className="form-control"
-                    value={frmProfile.values.password}
-                    onChange={frmProfile.handleChange}
-                    onBlur={frmProfile.handleBlur}
-                  />
-                  {frmProfile.errors.password && frmProfile.touched.password ? (
-                    <span className="text-danger mt-3">
-                      {frmProfile.errors.password}
-                    </span>
-                  ) : (
-                    ""
-                  )}
+                  <div className="d-dlex mx-0" style={{ position: "relative" }}>
+                    <input
+                      type={passwordShow ? "text" : "password"}
+                      id="password"
+                      name="password"
+                      className="form-control"
+                      value={frmProfile.values.password}
+                      onChange={frmProfile.handleChange}
+                      onBlur={frmProfile.handleBlur}
+                    />
+                    {frmProfile.errors.password &&
+                    frmProfile.touched.password ? (
+                      <span className="text-danger mt-3">
+                        {frmProfile.errors.password}
+                      </span>
+                    ) : (
+                      ""
+                    )}
+                    <button
+                      type="button"
+                      className="show"
+                      style={{
+                        position: "absolute",
+                        top: 8.5,
+                        right: 10,
+                        border: "none",
+                        opacity: "0.5",
+                        background: "none",
+                      }}
+                      onClick={togglePassword}
+                    >
+                      <i>{eye}</i>
+                    </button>
+                  </div>
                 </div>
               </div>
               <div className="form-group d-flex flex-column justify-content-end align-items-end">

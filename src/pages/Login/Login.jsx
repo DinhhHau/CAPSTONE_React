@@ -120,11 +120,11 @@ export default function Login(props) {
                   </button>
                 </div>
               </div>
-              <div class="form-group register d-flex justify-content-start align-items-baseline gap-3 ms-5 mt-5">
-                <button class="btn btn-success" type="submit">
+              <div className="form-group register d-flex justify-content-start align-items-baseline gap-3 ms-5 mt-5">
+                <button className="btn btn-success login" type="submit">
                   Login
                 </button>
-                <a class="" href="/registerfrm">
+                <a className="" href="/registerfrm">
                   Register now ?
                 </a>
               </div>

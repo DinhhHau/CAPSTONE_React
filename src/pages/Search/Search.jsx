@@ -2,11 +2,13 @@ import { Input } from "antd";
 import React, { useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 //
+import _ from "lodash";
+import { Select } from "antd";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
+// import Select from "@mui/material/Select";
 import { useEffect } from "react";
 import { http } from "../../util/tools";
 import ProductCart from "../../components/ProductCart/ProductCart";
@@ -18,9 +20,17 @@ export default function Search(props) {
   let timeoutRef = useRef({});
   let [arrProduct, setArrProduct] = useState([]);
   //select
+  const { Option } = Select;
   const [sortby, setSortby] = React.useState("");
   const handleChangemui = (event) => {
     setSortby(event.target.value);
+  };
+  const getProductBySort = (value) => {
+    let arrProductSort = _.sortBy(arrProduct, [(item) => item.price]);
+    if (value === "descending") {
+      arrProductSort = arrProductSort.reverse();
+    }
+    setArrProduct(arrProductSort);
   };
   //searchParam
   const [searchParam, setSearchParam] = useSearchParams();
@@ -87,7 +97,7 @@ export default function Search(props) {
       </div>
       <h1 className="title">Search result</h1>
       <div className="sort-input me-1">
-        <Box sx={{ minWidth: 165 }}>
+        {/* <Box sx={{ minWidth: 165 }}>
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">Sort by</InputLabel>
             <Select
@@ -102,7 +112,19 @@ export default function Search(props) {
               <MenuItem value="descending>">Price: descending</MenuItem>
             </Select>
           </FormControl>
-        </Box>
+        </Box> */}
+        <div className="sort-input">
+          <label>Sort by: </label>
+          <Select
+            defaultValue=""
+            onChange={(e) => {
+              getProductBySort(e);
+            }}
+          >
+            <Option value="ascending">Price: Ascending</Option>
+            <Option value="descending">Price: Descending</Option>
+          </Select>
+        </div>
       </div>
       <div className="cart">
         <div className="container-fluid d-flex justify-content-end">

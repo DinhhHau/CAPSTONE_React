@@ -35,10 +35,19 @@
     color: black;
     text-align: center !important;
   }
+  // .sort-input {
+  //   margin-top: 20px;
+  //   display: flex;
+  //   justify-content: end;
+  // }
   .sort-input {
-    margin-top: 20px;
-    display: flex;
-    justify-content: end;
+    text-align: right;
+    label {
+      margin-right: 5px;
+    }
+    .ant-select-selector {
+      width: 120px !important;
+    }
   }
   .search-result {
     padding-top: 20px;

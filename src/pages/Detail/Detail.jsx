@@ -52,7 +52,7 @@ export default function Detail() {
                 return (
                   <button
                     key={index}
-                    className="btn btn-secondary fs-3 text-white"
+                    className="btn btn-secondary fs-3 text-white bg-secondary button"
                   >
                     {size}
                   </button>

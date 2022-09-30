@@ -41,6 +41,7 @@
   //   justify-content: end;
   // }
   .sort-input {
+    margin-right: 30px;
     text-align: right;
     label {
       margin-right: 5px;
@@ -122,4 +123,7 @@
       }
     }
   }
+}
+.search .sort-input .ant-select-selector {
+  width: 170px !important;
 }

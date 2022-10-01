@@ -3,45 +3,21 @@ import { NavLink } from "react-router-dom";
 
 export default function Menu() {
   return (
-    <div className="menu bg-light">
-      <nav className="navbar navbar-expand-lg">
-        <div className="container-fluid">
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav">
-              <div className="nav-item">
-                <NavLink
-                  to={`/`}
-                  className="nav-link active"
-                  aria-current="page"
-                  href="#"
-                >
-                  Home
-                </NavLink>
-              </div>
-              <div className="nav-item">
-                <a className="nav-link" href="#">
-                  Men
-                </a>
-              </div>
-              <div className="nav-item">
-                <a className="nav-link" href="#">
-                  Woman
-                </a>
-              </div>
-              <div className="nav-item">
-                <a className="nav-link" href="#">
-                  Kid
-                </a>
-              </div>
-              <div className="nav-item">
-                <a className="nav-link" href="#">
-                  Sport
-                </a>
-              </div>
-            </ul>
-          </div>
-        </div>
-      </nav>
+    <div className="category">
+      <ul className="d-flex menu">
+        <li className="mx-2 fs-5">
+          <NavLink to={`/home`}>Home</NavLink>
+        </li>
+        <li className="mx-2 fs-5">
+          <NavLink to="/nike">Nike</NavLink>
+        </li>
+        <li className="mx-2 fs-5">
+          <NavLink to="/adidas">Adidas</NavLink>
+        </li>
+        <li className="mx-2 fs-5">
+          <NavLink to="/converse">Converse and Vans</NavLink>
+        </li>
+      </ul>
     </div>
   );
 }

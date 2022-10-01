@@ -9,7 +9,7 @@
     }
   }
   .row {
-    justify-content: space-between;
+    justify-content: flex-start;
     .col-4 {
       margin-top: 40px !important;
       transition: all 0.3s ease-out;
@@ -42,12 +42,14 @@
             @include text($fw-3, $fz-24, $cl-text-dark);
             height: 50px;
             margin-bottom: 0;
+            overflow: hidden;
           }
           .text-bot {
             line-height: 24px;
             @include text($fw-3, $fz-20, $cl-text-grey);
             position: relative;
             height: 50px;
+            overflow: hidden;
           }
           .text-price {
             font-weight: 600;

@@ -99,11 +99,11 @@ const productReducer = createSlice({
       if (window.confirm("Bạn có muốn xoá phản phẩm không ?")) {
         state.arrCart.splice(index, 1);
       }
-      toastService.showToast(
-        "warning",
-        "Delete",
-        "Bạn đã xoá sản phẩm ra khỏi giỏ hàng !"
-      );
+      // toastService.showToast(
+      //   "warning",
+      //   "Delete",
+      //   "Bạn đã xoá sản phẩm ra khỏi giỏ hàng !"
+      // );
     },
   },
 });

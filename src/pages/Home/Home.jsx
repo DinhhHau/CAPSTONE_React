@@ -24,7 +24,7 @@ export default function Home() {
   const renderProduct = () => {
     return arrProduct.map((item, index) => {
       return (
-        <div className="col-4 mt-2" key={index}>
+        <div className="col-4 d-grid" key={index}>
           <ProductCart product={item} />
         </div>
       );

@@ -14,11 +14,13 @@
       margin-top: 40px !important;
       transition: all 0.3s ease-out;
       width: calc(34% - 30px);
+      //
       .card {
         transition: all 0.1s;
         position: relative;
         box-shadow: 0 0 5px rgb(0 0 0 / 15%);
         background: #f8f8f8;
+
         .favorite-item {
           position: absolute;
           right: 30px;
@@ -33,49 +35,48 @@
           }
         }
         img {
+          max-width: 100%;
+          vertical-align: top;
+          position: relative;
         }
         .card-body {
           text-align: center;
           margin-bottom: 20px;
-          .text-top {
-            line-height: 29px;
-            @include text($fw-3, $fz-24, $cl-text-dark);
-            height: 50px;
-            margin-bottom: 0;
-            overflow: hidden;
-          }
-          .text-bot {
-            line-height: 24px;
-            @include text($fw-3, $fz-20, $cl-text-grey);
-            position: relative;
-            height: 50px;
-            overflow: hidden;
-          }
-          .text-price {
-            font-weight: 600;
-            font-size: 20px;
-            line-height: 48px;
-            letter-spacing: 1px;
-          }
+          padding: 20px 15px;
         }
-        .text-center {
+        h3 {
+          font-size: 20px;
+          font-weight: 400;
+          margin-bottom: 5px;
+          text-transform: uppercase;
+        }
+        p {
+          font-size: 16px;
+          letter-spacing: 1px;
+          font-weight: 300;
+        }
+        .price span {
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 48px;
+          letter-spacing: 1px;
+        }
+        .svg {
           position: absolute;
-          left: 44%;
-          bottom: -20px;
-
-          .icon {
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            line-height: 55px;
-            cursor: pointer;
-            background-color: #666666;
-            color: #fff;
-            font-size: 20px;
-          }
+          bottom: 0;
+          transform: translate(-50%, 50%);
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          background-color: #666666;
+          color: #fff;
+          font-size: 20px;
+          border: 15px solid #666666;
+          box-sizing: content-box;
         }
-        &:hover .icon {
+        &:hover .svg {
           background-color: $bg-yellow-1;
+          border: 15px solid #f8b653;
         }
         &:hover {
           border: 1px solid #f8b653;

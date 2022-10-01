@@ -5,24 +5,36 @@ export default function ProductCart(props) {
   const { product } = props;
   const navigate = useNavigate();
   return (
-    <div className="card">
+    <figure className="card">
       <div className="favorite-item">
         <i className="fa-solid fa-heart" />
       </div>
       <img src={product.image} alt={product.name} />
-      <div className="card-body">
-        <p className="text-top">{product.name}</p>
+      <figcaption className="card-body">
+        {/* <p className="text-top">{product.name}</p>
         <p className="text-bot">{product.shortDescription}</p>
-        <div className="text-price">${product.price}</div>
-      </div>
-      <div className="text-center">
+        <div className="text-price">${product.price}</div> */}
+        <h3>{product.name}</h3>
+        <p>{product.shortDescription}</p>
+        <div className="price">
+          <span>${product.price}</span>
+        </div>
+      </figcaption>
+      {/* <div className="text-center">
         <i
           className="icon fa-solid fa-cart-shopping icon"
           onClick={() => {
             navigate(`/detail/${product.id}/${product.name}`);
           }}
         />
-      </div>
-    </div>
+      </div> */}
+      <a
+        onClick={() => {
+          navigate(`/detail/${product.id}/${product.name}`);
+        }}
+      >
+        <i className="fa-solid fa-cart-shopping svg"></i>
+      </a>
+    </figure>
   );
 }

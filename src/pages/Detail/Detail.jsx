@@ -104,7 +104,7 @@ export default function Detail() {
           <div className="row">
             {productDetail.relatedProducts?.map((item, index) => {
               return (
-                <div className="col-4" key={index}>
+                <div className="col-4 d-grid" key={index}>
                   <ProductCart product={item} />
                 </div>
               );

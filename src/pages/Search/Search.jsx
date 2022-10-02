@@ -1,13 +1,9 @@
 import { Input } from "antd";
 import React, { useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-//
+//lodash
 import _ from "lodash";
 import { Select } from "antd";
-import Box from "@mui/material/Box";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
 // import Select from "@mui/material/Select";
 import { useEffect } from "react";
 import { http } from "../../util/tools";
@@ -21,10 +17,6 @@ export default function Search(props) {
   let [arrProduct, setArrProduct] = useState([]);
   //select
   const { Option } = Select;
-  // const [sortby, setSortby] = React.useState("");
-  // const handleChangemui = (event) => {
-  //   setSortby(event.target.value);
-  // };
   const getProductBySort = (value) => {
     let arrProductSort = _.sortBy(arrProduct, [(item) => item.price]);
     if (value === "descending") {
@@ -70,7 +62,7 @@ export default function Search(props) {
   const renderSearchProduct = () => {
     return arrProduct.map((item, index) => {
       return (
-        <div className="col-4  mt-2" key={index}>
+        <div className="col-4 d-grid" key={index}>
           <ProductCart product={item} />
         </div>
       );
